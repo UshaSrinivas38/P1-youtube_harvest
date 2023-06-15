@@ -3,7 +3,7 @@ import pandas as pd
 from sqlalchemy import create_engine
 
 # Connect to the MySQL database using SQLAlchemy
-engine = create_engine('mysql+mysqlconnector://root:1234@localhost/ytubedb')
+engine = create_engine('mysql+mysqlconnector://username:pwd@localhost/dbname')
 
 # Execute SQL query and fetch the data
 query = "SELECT * FROM channel_data"
