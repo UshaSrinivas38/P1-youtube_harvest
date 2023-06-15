@@ -80,7 +80,7 @@ def get_comments(youtube, video_ids):
         return all_comments
 comments_details = get_comments(youtube, video_ids)
 comments_df=pd.DataFrame(comments_details)
-client = MongoClient('mongodb+srv://ushasrinivas38:aaaa@cluster0.gwl7v6x.mongodb.net/?retryWrites=true&w=majority', tlsAllowInvalidCertificates=True)
+client = MongoClient('mongodb+srv://username:pwd@string', tlsAllowInvalidCertificates=True)
 db = client['MyDatabaseDB']
 channel_collection = db['channels']
 channel_collection.insert_many(channel_df.to_dict(orient='records'))
@@ -88,7 +88,6 @@ video_collection = db['videos']
 video_collection.insert_many(video_df.to_dict(orient='records'))
 comments_collection = db['comments']
 comments_collection.insert_many(comments_df.to_dict(orient='records'))
-client = MongoClient('mongodb+srv://ushasrinivas38:1234@cluster0.gwl7v6x.mongodb.net/?retryWrites=true&w=majority', tlsAllowInvalidCertificates=True)
 db=client['MyDatabaseDB']
 collection=db['channels']
 item_details = collection.find()
@@ -124,8 +123,8 @@ comments_df['comments_author'] = comments_df['comments_author'].apply(str)
 comments_df['comment_publishedAt'] = comments_df['comment_publishedAt'].apply(str)
 
 try:
-    connection = msql.connect(host='localhost', user='root',  
-                        password='aaaa', database='ytubedb')
+    connection = msql.connect(host='localhost', user='name',  
+                        password='pwd', database='ytubedb')
     if connection.is_connected():
         cursor = connection.cursor()
         cursor.execute("select database();")
